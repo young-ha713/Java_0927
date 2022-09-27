@@ -93,5 +93,87 @@ so 어떤 메소드를 선택하던지 간에 큰 상관이 없어 대부분 key
 
   
   
+```
+package Work;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class Vocab {
+
+	HashMap <String,String> vocabList = new HashMap<>();
+	Scanner sc = new Scanner(System.in);
+	
+	Vocab(){
+		menu();
+	}
+	
+	private void menu() {
+		// TODO Auto-generated method stub
+		for(;;) {
+			System.out.println("1.단어 추가");
+			System.out.println("2.단어 삭제");
+			System.out.println("3.단어 검색");
+			System.out.println("4.단어 전체보기");
+			System.out.println("5.단어 수정");
+			int selMenu = sc.nextInt();
+			sc.nextLine();
+			
+			if(selMenu==1) {
+				addV();
+			}else if(selMenu==2) {
+				delV();
+			}else if(selMenu==3) {
+				search();
+			}else if(selMenu==4) {
+				prt();
+			}else if(selMenu==5) {
+				mod();
+			}break;
+
+
+		}
+	}
+
+	private void mod() {
+		System.out.println("수정할 단어를 등록하세요");
+		
+	}
+
+	public void addV() {
+
+		
+		System.out.println("추가할 단어를 등록하세요");
+		String inputA = sc.nextLine();
+		System.out.println("추가할 단어 뜻을 등록하세요");
+		String inputB = sc.nextLine();
+		vocabList.put(inputA, inputB);
+	}
+	
+	public void delV() {
+		System.out.println("삭제할 단어를 입력하세요");
+		String inputA = sc.nextLine();
+		vocabList.remove(inputA);
+		System.out.println("삭제되었습니다");
+		
+	}
+	
+	public void search() {
+		System.out.println("찾을 단어를 입력하세요");
+		String search = sc.nextLine();
+		System.out.println(vocabList.get(search));
+	}
+		
+	
+	public void prt() {
+		for(Entry<String,String> entry :vocabList.entrySet()) {
+			System.out.println("[key]:" + entry.getKey()+"[value]:"+entry.getValue());
+		}
+	}
+	
+	
+}
+```
   
   
